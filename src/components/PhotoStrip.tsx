@@ -23,14 +23,18 @@ type Gesture =
   | { mode: 'drag'; id: string; dx: number; dy: number }
   | { mode: 'pinch'; id: string; dist: number; size: number; angle: number; rotation: number }
 interface ResizeGesture { id: string; size: number; dist: number; cx: number; cy: number }
-const NOISE = "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.48'/%3E%3C/svg%3E\")"
+const NOISE = `url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E")`
 const textureStyle = (texture: FrameConfig['texture']): React.CSSProperties => {
   switch (texture) {
     case 'paper': return { backgroundImage: `linear-gradient(115deg, rgb(255 255 255 / 10%), transparent 42%, rgb(70 50 30 / 5%)), ${NOISE}`, backgroundBlendMode: 'soft-light, multiply' }
-    case 'noise': return { backgroundImage: NOISE, backgroundBlendMode: 'soft-light', backgroundSize: '150px 150px' }
+    case 'noise': return { backgroundImage: NOISE, backgroundBlendMode: 'soft-light', backgroundSize: '100% 100%' }
     case 'film': return { backgroundImage: `linear-gradient(0deg, rgb(0 0 0 / 5%), rgb(255 255 255 / 5%)), ${NOISE}`, backgroundBlendMode: 'overlay, soft-light', backgroundSize: '100% 100%, 110px 110px' }
     case 'speckle': return { backgroundImage: `radial-gradient(circle at 12% 18%, rgb(30 25 20 / 16%) 0 1px, transparent 1.5px), radial-gradient(circle at 76% 68%, rgb(30 25 20 / 12%) 0 1px, transparent 1.5px), ${NOISE}`, backgroundSize: '17px 19px, 23px 29px, 160px 160px', backgroundBlendMode: 'multiply' }
     case 'botanical': return { backgroundImage: `radial-gradient(ellipse at 100% 0%, rgb(255 255 255 / 17%), transparent 34%), radial-gradient(ellipse at 0% 100%, rgb(30 25 20 / 8%), transparent 40%), ${NOISE}`, backgroundBlendMode: 'screen, multiply, soft-light' }
+    case 'gingham': return { backgroundImage: 'linear-gradient(90deg, rgb(80 70 60 / 23%) 50%, transparent 50%), linear-gradient(rgb(80 70 60 / 23%) 50%, transparent 50%)', backgroundSize: '18px 18px' }
+    case 'stripes': return { backgroundImage: 'repeating-linear-gradient(135deg, transparent 0 7px, rgb(80 70 60 / 24%) 7px 10px)' }
+    case 'grid': return { backgroundImage: 'linear-gradient(rgb(80 70 60 / 24%) 1px, transparent 1px), linear-gradient(90deg, rgb(80 70 60 / 24%) 1px, transparent 1px)', backgroundSize: '14px 14px' }
+    case 'hearts': return { backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M12 20s-8-4.8-8-10a4.4 4.4 0 0 1 8-2.3A4.4 4.4 0 0 1 20 10c0 5.2-8 10-8 10z' fill='%23b8456a' fill-opacity='.38'/%3E%3C/svg%3E")`, backgroundSize: '24px 24px' }
     default: return {}
   }
 }
@@ -141,3 +145,4 @@ const PhotoStrip = forwardRef<HTMLDivElement, Props>(function PhotoStrip(
   </div>
 })
 export default PhotoStrip
+

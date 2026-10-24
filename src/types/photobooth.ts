@@ -3,7 +3,7 @@ export type PhotoSource = 'camera' | 'upload'
 export type ShotCount = 1 | 2 | 3 | 4 | 5 | 6
 export type LayoutId = '1-cut' | '2-cut' | '3-cut' | '4-cut' | '5-cut' | '6-cut' | '2x2'
 export type FilterPreset = 'original' | 'grayscale' | 'warm' | 'cool' | 'vintage'
-export type TextureId = 'none' | 'paper' | 'noise' | 'film' | 'speckle' | 'botanical'
+export type TextureId = 'none' | 'paper' | 'noise' | 'film' | 'speckle' | 'botanical' | 'gingham' | 'stripes' | 'grid' | 'hearts'
 export type FrameStyleId = 'classic' | 'double' | 'film' | 'editorial'
 export type StickerIcon = 'alert' | 'eightBall' | 'cake' | 'flower' | 'duo' | 'kuromi' | 'love' | 'myme' | 'poteto' | 'song' | 'star'
 export interface CapturedPhoto { src: string; source: PhotoSource }

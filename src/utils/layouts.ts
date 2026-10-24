@@ -22,11 +22,10 @@ export const FRAME_PRESETS = [
 ] as const
 export const TEXTURES: { id: TextureId; label: string; description: string }[] = [
   { id: 'none', label: 'Clean', description: 'Smooth colour' },
-  { id: 'paper', label: 'Paper grain', description: 'Soft paper fibres' },
-  { id: 'noise', label: 'Fine noise', description: 'Subtle analogue grain' },
-  { id: 'film', label: 'Film grain', description: 'Vintage film texture' },
-  { id: 'speckle', label: 'Speckles', description: 'Tiny printed flecks' },
-  { id: 'botanical', label: 'Botanical', description: 'Soft organic shadows' },
+  { id: 'gingham', label: 'Gingham', description: 'Clear check pattern' },
+  { id: 'stripes', label: 'Stripes', description: 'Diagonal stripes' },
+  { id: 'grid', label: 'Grid', description: 'Minimal grid pattern' },
+  { id: 'hearts', label: 'Hearts', description: 'Tiny heart pattern' },
 ]
 export const FRAME_STYLES: { id: FrameStyleId; label: string; description: string }[] = [
   { id: 'classic', label: 'Classic', description: 'Simple border' },
@@ -36,7 +35,7 @@ export const FRAME_STYLES: { id: FrameStyleId; label: string; description: strin
 ]
 export const DEFAULT_FRAME: FrameConfig = {
   presetId: 'ivory', background: '#F4EFE6', ink: '#292722', padding: 16, caption: 'CLICK! PHOTOBOOTH',
-  showDate: true, texture: 'paper', style: 'editorial',
+  showDate: true, texture: 'gingham', style: 'editorial',
 }
 export const FILTER_LABELS: Record<FilterPreset, string> = {
   original: 'Original', grayscale: 'Mono', warm: 'Warm', cool: 'Cool', vintage: 'Vintage',

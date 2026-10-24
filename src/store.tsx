@@ -27,7 +27,12 @@ const DEFAULT_FILTER: FilterConfig = { preset: 'original', brightness: 100, cont
 function loadPrefs(): { frame: FrameConfig; filter: FilterConfig } {
   try {
     const raw = JSON.parse(localStorage.getItem(PREFS_KEY) ?? 'null')
-    if (raw) return { frame: { ...DEFAULT_FRAME, ...raw.frame }, filter: { ...DEFAULT_FILTER, ...raw.filter } }
+    if (raw) {
+      const frame = { ...DEFAULT_FRAME, ...raw.frame }
+      // Older saved preferences may use textures that are no longer offered.
+      if (!['none', 'gingham', 'stripes', 'grid', 'hearts'].includes(frame.texture)) frame.texture = 'gingham'
+      return { frame, filter: { ...DEFAULT_FILTER, ...raw.filter } }
+    }
   } catch { /* ignore corrupt or unavailable storage */ }
   return { frame: DEFAULT_FRAME, filter: DEFAULT_FILTER }
 }
