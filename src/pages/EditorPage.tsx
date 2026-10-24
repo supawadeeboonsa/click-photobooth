@@ -43,7 +43,8 @@ export default function EditorPage() {
             interactive selectedId={state.selectedDecorationId}
             onSelect={(id) => dispatch({ type: 'selectDeco', id })}
             onMove={(id, x, y) => dispatch({ type: 'updateDeco', id, patch: { x, y } })}
-            onRotate={(id, rotation) => dispatch({ type: 'updateDeco', id, patch: { rotation } })} />
+            onRotate={(id, rotation) => dispatch({ type: 'updateDeco', id, patch: { rotation } })}
+            onResize={(id, size, x, y) => dispatch({ type: 'updateDeco', id, patch: { size, x, y } })} />
         </div>
         {missing > 0 ? (
           <p role="status" className="max-w-xs text-center text-xs text-rose">
@@ -51,7 +52,7 @@ export default function EditorPage() {
             <button className="underline underline-offset-2" onClick={() => dispatch({ type: 'goto', step: 'capture' })}>Add photos</button>
           </p>
         ) : (
-          <p className="text-center text-[10px] tracking-wide text-muted">Choose a sticker, drag it onto your photo, and drag the round dot above it to rotate.</p>
+          <p className="text-center text-[10px] tracking-wide text-muted">Tap a sticker to select it. Drag to move, drag the corner dot to resize, the top dot to rotate — or pinch with two fingers.</p>
         )}
       </section>
       <footer className="order-3 grid grid-cols-2 items-center gap-2 border-t border-line bg-paper px-3 py-2 sm:gap-3 sm:px-8 lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:flex lg:justify-between lg:px-12 lg:py-2.5">
